@@ -40,6 +40,10 @@ public class Frame {
     public boolean isSpare() {
         return getPins() == 10;
     }
+
+    public boolean isStrike() {
+        return getFirstRollPins() == 10;
+    }
 }
 
 
