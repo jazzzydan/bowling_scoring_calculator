@@ -1,24 +1,38 @@
 package org.example;
 
 
-public class BowlingScoreCalculator {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Frame frame = new Frame();
-    private int totalPoints;
+public class BowlingScoreCalculator {
+    Frame frame = new Frame();
+    List<Frame> frames = new ArrayList<>();
 
     public void roll(int pins) {
-
+//        var frame = frames.getLast();
         if (frame.isFirstRoll()) {
             frame.setFirstRollPins(pins);
-            frame.setPoints(pins);
-            frame.setFirstRoll(false);
+            checkPreviousFrameHasSpare(pins);
         } else {
             frame.setSecondRollPins(pins);
-            frame.setPoints(frame.getFirstRollPins() + pins);
+            frames.add(frame);
+            frame = new Frame();
+        }
+    }
+
+    private void checkPreviousFrameHasSpare(int pins) {
+        if (!frames.isEmpty()) {
+            var prevFrame = frames.get(frames.size() - 1);
+            if (prevFrame.isSpare()) {
+                prevFrame.setBonus(pins);
+            }
         }
     }
 
     public int score() {
-        return frame.getPoints();
+
+        return frames.stream()
+                .mapToInt(frame -> frame.getScore())
+                .sum();
     }
 }

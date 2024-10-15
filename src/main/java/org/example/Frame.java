@@ -1,14 +1,9 @@
 package org.example;
 
 public class Frame {
-    private int firstRollPins = 0;
-    private int secondRollPins = 0;
-    private int points;
-    private boolean isFirstRoll = true;
-
-    public Frame() {
-
-    }
+    private int firstRollPins = -1;
+    private int secondRollPins = -1;
+    private int bonus = 0;
 
     public int getFirstRollPins() {
         return firstRollPins;
@@ -26,20 +21,24 @@ public class Frame {
         this.secondRollPins = secondRollPins;
     }
 
-    public int getPoints() {
-        return points;
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public int getPins() {
+        return Math.max(firstRollPins, 0) + Math.max(secondRollPins, 0);
+    }
+
+    public int getScore() {
+        return getPins() + bonus;
     }
 
     public boolean isFirstRoll() {
-        return isFirstRoll;
+        return firstRollPins < 0;
     }
 
-    public void setFirstRoll(boolean firstRoll) {
-        isFirstRoll = firstRoll;
+    public boolean isSpare() {
+        return getPins() == 10;
     }
 }
 
