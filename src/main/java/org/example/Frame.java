@@ -3,14 +3,15 @@ package org.example;
 public class Frame {
     private int firstRollPins = -1;
     private int secondRollPins = -1;
+
+    public Frame(int firstRollPins) {
+        this.firstRollPins = firstRollPins;
+    }
+
     private int bonus = 0;
 
     public int getFirstRollPins() {
         return firstRollPins;
-    }
-
-    public void setFirstRollPins(int firstRollPins) {
-        this.firstRollPins = firstRollPins;
     }
 
     public int getSecondRollPins() {
@@ -21,8 +22,8 @@ public class Frame {
         this.secondRollPins = secondRollPins;
     }
 
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
+    public void addBonus(int bonus) {
+        this.bonus += bonus;
     }
 
     public int getPins() {
@@ -33,8 +34,8 @@ public class Frame {
         return getPins() + bonus;
     }
 
-    public boolean isFirstRoll() {
-        return firstRollPins < 0;
+    public boolean isOpen() {
+        return secondRollPins < 0;
     }
 
     public boolean isSpare() {
