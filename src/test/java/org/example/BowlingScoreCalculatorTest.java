@@ -96,26 +96,37 @@ class BowlingScoreCalculatorTest {
         assertEquals(42, calc.calculateScore());
     }
 
-//    @Test
-//    void allStrikes() {
-//        for (int i = 0; i < 10; i++) {
-//            calc.roll(10);
-//        }
-//        calc.roll(10);
-//        calc.roll(10);
-//
-//        assertEquals(300, calc.calculateScore());
-//    }
-//
-//
-//    @Test
-//    void randomGame() {
-//
-//        ArrayList<Integer> rolls = new ArrayList<>(
-//                Arrays.asList(8, 2, 5, 4, 9, 1, 10, 10, 5, 5, 5, 3, 6, 3, 9, 1, 9, 1, 10));
-//        for (Integer roll : rolls) {
-//            calc.roll(roll);
-//        }
-//        assertEquals(149, calc.calculateScore());
-//    }
+    @Test
+    void allStrikes() {
+        for (int i = 0; i < 10; i++) {
+            calc.roll(10);
+        }
+        calc.roll(10);
+        calc.roll(10);
+
+        assertEquals(300, calc.calculateScore());
+    }
+
+
+    @Test
+    void randomGame() {
+
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(8, 2, 5, 4, 9, 0, 10, 10, 5, 5, 5, 3, 6, 3, 9, 1, 9, 1, 10));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(149, calc.calculateScore());
+    }
+
+    @Test
+    void randomGame200() {
+
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(10, 9, 1, 10, 9, 1, 10, 9, 1, 10, 9, 1,10, 9, 1, 10 ));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(200, calc.calculateScore());
+    }
 }

@@ -34,24 +34,26 @@ public class BowlingScoreCalculator {
             }
         }
         return totalScore;
-
-//        return frames.stream()
-//                .mapToInt(frame -> frame.getScore())
-//                .sum();
     }
 
     private int getSpareBonus(int frameIndex) {
-        var nextFrame = frames.get(frameIndex + 1);
-        return nextFrame.getFirstRollPins();
+        if (frameIndex < 9) {
+            var nextFrame = frames.get(frameIndex + 1);
+            return nextFrame.getFirstRollPins();
+        }
+        return 0;
     }
 
     private int getStrikeBonus(int frameIndex) {
-        var nextFrame = frames.get(frameIndex + 1);
-        int bonus = nextFrame.getFirstRollPins() + nextFrame.getSecondRollPins();
+        if (frameIndex < 9) {
+            var nextFrame = frames.get(frameIndex + 1);
+            int bonus = nextFrame.getFirstRollPins() + nextFrame.getSecondRollPins();
 
-        if (nextFrame.isStrike() && frames.size() > (frameIndex + 2)) {
-            bonus += frames.get(frameIndex + 2).getFirstRollPins();
+            if (nextFrame.isStrike() && frames.size() > (frameIndex + 2)) {
+                bonus += frames.get(frameIndex + 2).getFirstRollPins();
+            }
+            return bonus;
         }
-        return bonus;
+        return 0;
     }
 }

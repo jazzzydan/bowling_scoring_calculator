@@ -3,12 +3,11 @@ package org.example;
 public class Frame {
     private int firstRollPins = -1;
     private int secondRollPins = -1;
+    private int bonus = 0;
 
     public Frame(int firstRollPins) {
         this.firstRollPins = firstRollPins;
     }
-
-    private int bonus = 0;
 
     public int getFirstRollPins() {
         return firstRollPins;
@@ -20,10 +19,6 @@ public class Frame {
 
     public void setSecondRollPins(int secondRollPins) {
         this.secondRollPins = secondRollPins;
-    }
-
-    public void addBonus(int bonus) {
-        this.bonus += bonus;
     }
 
     public int getPins() {
