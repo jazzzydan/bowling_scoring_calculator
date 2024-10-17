@@ -39,6 +39,21 @@ public class Frame {
     public boolean isStrike() {
         return getFirstRollPins() == 10;
     }
+
+    @Override
+    public String toString() {
+        String frameResult = "";
+        if (isStrike()) {
+            frameResult = "X -";
+        }
+        else if (isSpare()) {
+            frameResult = firstRollPins + " /";
+        }
+        else {
+            frameResult = firstRollPins + " " + secondRollPins;
+        }
+        return frameResult;
+    }
 }
 
 

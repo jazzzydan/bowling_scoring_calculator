@@ -22,18 +22,7 @@ public class BowlingScoreCalculator {
 
     public int calculateScore() {
         int totalScore = 0;
-
-        for (int i = 0; i < frames.size(); i++) {
-            Frame frame = frames.get(i);
-            totalScore += frame.getScore();
-
-            if (frame.isStrike() && frames.size() > (i + 1)) {
-                totalScore += getStrikeBonus(i);
-            } else if (frame.isSpare() && frames.size() > (i + 1)) {
-                totalScore += getSpareBonus(i);
-            }
-        }
-        return totalScore;
+        return getScoreAfterFrame(frames.size(), totalScore);
     }
 
     private int getSpareBonus(int frameIndex) {
@@ -55,5 +44,19 @@ public class BowlingScoreCalculator {
             return bonus;
         }
         return 0;
+    }
+
+    public int getScoreAfterFrame(int frameNumber, int totalScore) {
+        for (int i = 0; i < frameNumber; i++) {
+            Frame frame = frames.get(i);
+            totalScore += frame.getScore();
+
+            if (frame.isStrike() && frames.size() > (i + 1)) {
+                totalScore += getStrikeBonus(i);
+            } else if (frame.isSpare() && frames.size() > (i + 1)) {
+                totalScore += getSpareBonus(i);
+            }
+        }
+        return totalScore;
     }
 }

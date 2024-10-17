@@ -136,4 +136,27 @@ class BowlingScoreCalculatorTest {
         }
         assertEquals(73, calc.calculateScore());
     }
+
+    @Test
+    void spareGame() {
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(5,5,5,5,6,4,4,6,7,3,3,7,8,2,2,8,9,1,1,9,1));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(146, calc.calculateScore());
+    }
+
+    @Test
+    void secondFrameScore() {
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(5,5,5,5,6,4,4,2));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(51, calc.calculateScore());
+        assertEquals(15, calc.getScoreAfterFrame(1,0));
+        assertEquals(31, calc.getScoreAfterFrame(2,0));
+        assertEquals(45, calc.getScoreAfterFrame(3,0));
+    }
 }
