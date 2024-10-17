@@ -34,7 +34,7 @@ class BowlingScoreCalculatorTest {
     void isSpare() {
         calc.roll(5);
         calc.roll(5);
-        assertTrue(calc.frames.getLast().isSpare());
+        assertTrue(calc.frames.get(calc.frames.size() - 1).isSpare());
     }
 
     @Test
@@ -45,7 +45,7 @@ class BowlingScoreCalculatorTest {
         calc.roll(3);
 
         assertEquals(2, calc.frames.size());
-        assertEquals(6, calc.frames.getLast().getScore());
+        assertEquals(6, calc.frames.get(calc.frames.size() - 1).getScore());
         assertEquals(19, calc.calculateScore());
     }
 
@@ -56,7 +56,7 @@ class BowlingScoreCalculatorTest {
         calc.roll(3);
 
         assertEquals(2, calc.frames.size());
-        assertEquals(8, calc.frames.getLast().getScore());
+        assertEquals(8, calc.frames.get(calc.frames.size() - 1).getScore());
         assertEquals(26, calc.calculateScore());
     }
 
@@ -89,33 +89,32 @@ class BowlingScoreCalculatorTest {
     void threeFrames() {
         calc.roll(10);
         calc.roll(10);
-
         calc.roll(4);
         calc.roll(0);
 
         assertEquals(42, calc.calculateScore());
     }
 
-//    @Test
-//    void allStrikes() {
-//        for (int i = 0; i < 10; i++) {
-//            calc.roll(10);
-//        }
-//        calc.roll(10);
-//        calc.roll(10);
-//
-//        assertEquals(300, calc.calculateScore());
-//    }
-//
-//
-//    @Test
-//    void randomGame() {
-//
-//        ArrayList<Integer> rolls = new ArrayList<>(
-//                Arrays.asList(8, 2, 5, 4, 9, 1, 10, 10, 5, 5, 5, 3, 6, 3, 9, 1, 9, 1, 10));
-//        for (Integer roll : rolls) {
-//            calc.roll(roll);
-//        }
-//        assertEquals(149, calc.calculateScore());
-//    }
+    @Test
+    void allStrikes() {
+        for (int i = 0; i < 10; i++) {
+            calc.roll(10);
+        }
+        calc.roll(10);
+        calc.roll(10);
+
+        assertEquals(300, calc.calculateScore());
+    }
+
+
+    @Test
+    void randomGame() {
+
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(8, 2, 5, 4, 9, 0, 10, 10, 5, 5, 5, 3, 6, 3, 9, 1, 9, 1, 10));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(149, calc.calculateScore());
+    }
 }

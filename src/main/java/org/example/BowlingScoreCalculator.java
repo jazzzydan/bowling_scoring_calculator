@@ -5,17 +5,17 @@ import java.util.List;
 
 public class BowlingScoreCalculator {
 
-    List<Frame> frames = new ArrayList<>();
+    ArrayList<Frame> frames = new ArrayList<>();
 
     public void roll(int pins) {
-        var frame = frames.isEmpty() ? null : frames.getLast();
+        Frame frame = frames.isEmpty() ? null : frames.get(frames.size() - 1);
 
         if (frame != null && frame.isOpen()) {
             frame.setSecondRollPins(pins);
         } else {
             frames.add(frame = new Frame(pins));
             if (pins == 10) {
-                frames.getLast().setSecondRollPins(0);
+                frames.get(frames.size() - 1).setSecondRollPins(0);
             }
         }
     }
@@ -41,17 +41,23 @@ public class BowlingScoreCalculator {
     }
 
     private int getSpareBonus(int frameIndex) {
-        var nextFrame = frames.get(frameIndex + 1);
-        return nextFrame.getFirstRollPins();
+        if (frameIndex < 9) {
+            var nextFrame = frames.get(frameIndex + 1);
+            return nextFrame.getFirstRollPins();
+        }
+        return 0;
     }
 
     private int getStrikeBonus(int frameIndex) {
-        var nextFrame = frames.get(frameIndex + 1);
-        int bonus = nextFrame.getFirstRollPins() + nextFrame.getSecondRollPins();
+        if (frameIndex < 9) {
+            var nextFrame = frames.get(frameIndex + 1);
+            int bonus = nextFrame.getFirstRollPins() + nextFrame.getSecondRollPins();
 
-        if (nextFrame.isStrike() && frames.size() > (frameIndex + 2)) {
-            bonus += frames.get(frameIndex + 2).getFirstRollPins();
+            if (nextFrame.isStrike() && frames.size() > (frameIndex + 2)) {
+                bonus += frames.get(frameIndex + 2).getFirstRollPins();
+            }
+            return bonus;
         }
-        return bonus;
+        return 0;
     }
 }

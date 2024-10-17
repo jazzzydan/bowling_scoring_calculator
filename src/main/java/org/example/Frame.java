@@ -22,10 +22,6 @@ public class Frame {
         this.secondRollPins = secondRollPins;
     }
 
-    public void addBonus(int bonus) {
-        this.bonus += bonus;
-    }
-
     public int getPins() {
         return Math.max(firstRollPins, 0) + Math.max(secondRollPins, 0);
     }
