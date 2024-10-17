@@ -158,5 +158,25 @@ class BowlingScoreCalculatorTest {
         assertEquals(15, calc.getScoreAfterFrame(1,0));
         assertEquals(31, calc.getScoreAfterFrame(2,0));
         assertEquals(45, calc.getScoreAfterFrame(3,0));
+        assertEquals(51, calc.getScoreAfterFrame(4,0));
+    }
+
+    @Test
+    void randomGameFrameScores() {
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(8, 2, 5, 4, 9, 0, 10, 10, 5, 5, 5, 3, 6, 3, 9, 1, 9, 1, 10));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(15, calc.getScoreAfterFrame(1,0));
+        assertEquals(24, calc.getScoreAfterFrame(2,0));
+        assertEquals(33, calc.getScoreAfterFrame(3,0));
+        assertEquals(58, calc.getScoreAfterFrame(4,0));
+        assertEquals(78, calc.getScoreAfterFrame(5,0));
+        assertEquals(93, calc.getScoreAfterFrame(6,0));
+        assertEquals(101, calc.getScoreAfterFrame(7,0));
+        assertEquals(110, calc.getScoreAfterFrame(8,0));
+        assertEquals(129, calc.getScoreAfterFrame(9,0));
+        assertEquals(149, calc.getScoreAfterFrame(calc.frames.size(),0));
     }
 }
