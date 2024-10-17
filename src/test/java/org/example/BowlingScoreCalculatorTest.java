@@ -129,4 +129,15 @@ class BowlingScoreCalculatorTest {
         }
         assertEquals(200, calc.calculateScore());
     }
+
+    @Test
+    void randomGame73() {
+
+        ArrayList<Integer> rolls = new ArrayList<>(
+                Arrays.asList(0,1,2,3,4,5,6,4,7,0,8,0,9,0,10,0,1,2,3));
+        for (Integer roll : rolls) {
+            calc.roll(roll);
+        }
+        assertEquals(73, calc.calculateScore());
+    }
 }

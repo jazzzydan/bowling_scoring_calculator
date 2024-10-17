@@ -13,8 +13,8 @@ public class BowlingScoreCalculator {
         if (frame != null && frame.isOpen()) {
             frame.setSecondRollPins(pins);
         } else {
-            frames.add(frame = new Frame(pins));
-            if (pins == 10) {
+            frames.add(new Frame(pins));
+            if (frames.getLast().isStrike()) {
                 frames.getLast().setSecondRollPins(0);
             }
         }
