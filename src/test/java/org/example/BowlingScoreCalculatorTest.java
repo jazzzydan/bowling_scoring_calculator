@@ -107,10 +107,8 @@ class BowlingScoreCalculatorTest {
         assertEquals(300, calc.calculateScore());
     }
 
-
     @Test
     void randomGame() {
-
         ArrayList<Integer> rolls = new ArrayList<>(
                 Arrays.asList(8, 2, 5, 4, 9, 0, 10, 10, 5, 5, 5, 3, 6, 3, 9, 1, 9, 1, 10));
         for (Integer roll : rolls) {
@@ -121,7 +119,6 @@ class BowlingScoreCalculatorTest {
 
     @Test
     void randomGame200() {
-
         ArrayList<Integer> rolls = new ArrayList<>(
                 Arrays.asList(10, 9, 1, 10, 9, 1, 10, 9, 1, 10, 9, 1,10, 9, 1, 10 ));
         for (Integer roll : rolls) {
@@ -132,7 +129,6 @@ class BowlingScoreCalculatorTest {
 
     @Test
     void randomGame73() {
-
         ArrayList<Integer> rolls = new ArrayList<>(
                 Arrays.asList(0,1,2,3,4,5,6,4,7,0,8,0,9,0,10,0,1,2,3));
         for (Integer roll : rolls) {

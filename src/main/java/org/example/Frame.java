@@ -1,9 +1,8 @@
 package org.example;
 
 public class Frame {
-    private int firstRollPins = -1;
+    final private int firstRollPins;
     private int secondRollPins = -1;
-    private int bonus = 0;
 
     public Frame(int firstRollPins) {
         this.firstRollPins = firstRollPins;
@@ -26,7 +25,7 @@ public class Frame {
     }
 
     public int getScore() {
-        return getPins() + bonus;
+        return getPins();
     }
 
     public boolean isOpen() {

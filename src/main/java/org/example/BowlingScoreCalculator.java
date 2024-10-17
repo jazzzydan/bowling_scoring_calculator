@@ -21,8 +21,8 @@ public class BowlingScoreCalculator {
     }
 
     public int calculateScore() {
-
         int totalScore = 0;
+
         for (int i = 0; i < frames.size(); i++) {
             Frame frame = frames.get(i);
             totalScore += frame.getScore();
