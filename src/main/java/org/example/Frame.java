@@ -54,6 +54,26 @@ public class Frame {
         }
         return frameResult;
     }
+
+    public String toString(int frameNr) {
+        String frameResult = "";
+        int limit = 8;
+        if (isStrike() && frameNr > limit) {
+            frameResult = "X";
+        } else if (isStrike()) {
+            frameResult = "X -";
+        }
+        else if (isSpare()) {
+            frameResult = firstRollPins + " /";
+        }
+        else if (frameNr > limit+1) {
+            frameResult = firstRollPins + " ";
+        }
+        else {
+            frameResult = firstRollPins + " " + secondRollPins;
+        }
+        return frameResult;
+    }
 }
 
 
