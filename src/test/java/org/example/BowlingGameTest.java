@@ -7,13 +7,14 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BowlingScoreCalculatorTest {
-    BowlingScoreCalculator calc = new BowlingScoreCalculator();
+class BowlingGameTest {
+    BowlingGame calc = new BowlingGame();
 
     @Test
     void oneRoll() {
         calc.roll(6);
         assertEquals(6, calc.calculateScore());
+        // todo: add "toSting" tests
     }
 
     @Test
