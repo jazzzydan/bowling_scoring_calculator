@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BowlingScoreCalculator {
+public class BowlingGame {
 
     List<Frame> frames = new ArrayList<>();
 
@@ -58,5 +58,34 @@ public class BowlingScoreCalculator {
             }
         }
         return totalScore;
+    }
+
+    @Override
+    public String toString() {
+        List<Integer> frameScore = new ArrayList<>();
+        StringBuilder scoreBoard = new StringBuilder("| ");
+
+        for (int i = 0; i < frames.size(); i++) {
+            if (i < 9) {
+                scoreBoard.append(frames.get(i).toString()).append(" | ");
+            } else {
+                scoreBoard.append(frames.get(i).toString(i));
+            }
+            frameScore.add(getScoreAfterFrame(i, 0));
+        }
+        scoreBoard.append("|");
+        frameScore.add(getScoreAfterFrame(frames.size(), 0));
+
+        scoreBoard.append("\n| ");
+        for (int i = 1; i < frameScore.size(); i++) {
+            if (i < 10) {
+                scoreBoard.append(String.format("%-3s",frameScore.get(i))).append(" | ");
+            } else if (i == 10) {
+                scoreBoard.append(calculateScore());
+            }
+        }
+        scoreBoard.append("\nScore: ").append(calculateScore()).append("\n");
+
+        return scoreBoard.toString();
     }
 }

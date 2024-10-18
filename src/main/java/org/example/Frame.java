@@ -42,38 +42,44 @@ public class Frame {
 
     @Override
     public String toString() {
-        String frameResult = "";
         if (isStrike()) {
-            frameResult = "X -";
+            return String.format("%-3s", "X -");
         }
         else if (isSpare()) {
-            frameResult = firstRollPins + " /";
+            return String.format("%-3s", firstRollPins + " /");
         }
         else {
-            frameResult = firstRollPins + " " + secondRollPins;
+            return String.format("%-3s", firstRollPins + " " + secondRollPins);
         }
-        return frameResult;
     }
 
     public String toString(int frameNr) {
-        String frameResult = "";
-        int limit = 8;
-        if (isStrike() && frameNr > limit) {
-            frameResult = "X";
-        } else if (isStrike()) {
-            frameResult = "X -";
+        if (isStrike() && frameNr > 8) {
+            return String.format("%-3s","X ");
         }
         else if (isSpare()) {
-            frameResult = firstRollPins + " /";
+            return String.format("%-3s",firstRollPins + " / ");
         }
-        else if (frameNr > limit+1) {
-            frameResult = firstRollPins + " ";
+        else if (frameNr > 9) {
+            return String.format("%-3s",firstRollPins + " ");
         }
         else {
-            frameResult = firstRollPins + " " + secondRollPins;
+            return String.format("%-3s",firstRollPins + " " + secondRollPins+ " ");
         }
-        return frameResult;
     }
 }
 
 
+//// todo: !!!
+//class LastFrame extends Frame {
+//
+//    public LastFrame(int firstRollPins) {
+//        super(firstRollPins);
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "X " + super.toString();
+//    }
+
+//}
