@@ -44,27 +44,26 @@ public class Frame {
     public String toString() {
         if (isStrike()) {
             return String.format("%-3s", "X -");
-        }
-        else if (isSpare()) {
+        } else if (isSpare()) {
             return String.format("%-3s", firstRollPins + " /");
-        }
-        else {
+        } else if (secondRollPins == -1) {
+            return String.format("%-3s", firstRollPins);
+        } else {
             return String.format("%-3s", firstRollPins + " " + secondRollPins);
         }
     }
 
     public String toString(int frameNr) {
         if (isStrike() && frameNr > 8) {
-            return String.format("%-3s","X ");
-        }
-        else if (isSpare()) {
-            return String.format("%-3s",firstRollPins + " / ");
-        }
-        else if (frameNr > 9) {
-            return String.format("%-3s",firstRollPins + " ");
-        }
-        else {
-            return String.format("%-3s",firstRollPins + " " + secondRollPins+ " ");
+            return String.format("%-3s", "X ");
+        } else if (isSpare()) {
+            return String.format("%-3s", firstRollPins + " / ");
+        } else if (frameNr > 9) {
+            return String.format("%-3s", firstRollPins + " ");
+        } else if (secondRollPins == -1) {
+            return String.format("%-3s", firstRollPins);
+        } else {
+            return String.format("%-3s", firstRollPins + " " + secondRollPins + " ");
         }
     }
 }

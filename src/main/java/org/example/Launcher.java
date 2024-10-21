@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -34,13 +35,13 @@ public class Launcher {
         if (randomRolls.getLast() == 10) {
             int roll1 = rand.nextInt(11);
             randomRolls.add(roll1);
+            int roll2;
             if (roll1 != 10) {
-                int roll2 = rand.nextInt(11 - roll1);
-                randomRolls.add(roll2);
+                roll2 = rand.nextInt(11 - roll1);
             } else {
-                int roll2 = rand.nextInt(11);
-                randomRolls.add(roll2);
+                roll2 = rand.nextInt(11);
             }
+            randomRolls.add(roll2);
         } else if (randomRolls.getLast() + randomRolls.get(randomRolls.size() - 2) == 10) {
             int roll1 = rand.nextInt(11);
             randomRolls.add(roll1);

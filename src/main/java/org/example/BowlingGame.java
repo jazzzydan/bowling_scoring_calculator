@@ -73,13 +73,14 @@ public class BowlingGame {
             }
             frameScore.add(getScoreAfterFrame(i, 0));
         }
-        scoreBoard.append("|");
+
+        scoreBoard.append(frameScore.size() < 10 ? "" : "|");
         frameScore.add(getScoreAfterFrame(frames.size(), 0));
 
         scoreBoard.append("\n| ");
         for (int i = 1; i < frameScore.size(); i++) {
             if (i < 10) {
-                scoreBoard.append(String.format("%-3s",frameScore.get(i))).append(" | ");
+                scoreBoard.append(String.format("%-3s", frameScore.get(i))).append(" | ");
             } else if (i == 10) {
                 scoreBoard.append(calculateScore());
             }
